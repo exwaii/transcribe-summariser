@@ -15,8 +15,10 @@ def get_data(url):
     start = time.time()
     print("getting youtube audio")
     yt = YouTube(url)
+    stream = yt.streams.first()
     title = yt.title
     description = yt.description
+    print(yt)
     for char in FORBIDDEN_FOLDER_CHARS:
         title = title.replace(char, "")
         description = description.replace(char, "")
@@ -25,10 +27,11 @@ def get_data(url):
         f.write(url)
     download_time = time.time() - start
     print(f"youtube audio downloaded in {download_time // 60} minute(s) and {download_time % 60} second(s)")
+    print(yt.captions)
     return title, description, path
 
 def main():
-    get_data("https://youtu.be/GfrF25Fg5rs")
+    print(get_data("https://www.youtube.com/watch?v=5pl7ohz4xvg"))
 
 
 if __name__ == "__main__":

@@ -40,7 +40,7 @@ def translate(title, description, path):
 
     start = time.time()
     print("transcribing")
-    transcript = openai.Audio.translate("whisper-1", audio_file, prompt=prompt)
+    transcript = openai.Audio.transcribe("whisper-1", audio_file, prompt=prompt)
 
     end_time = time.time() - start
     print(

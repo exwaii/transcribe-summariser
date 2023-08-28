@@ -3,13 +3,13 @@ from download import get_data
 
 
 def output(path, og, cleaned=None, summary=None):
-    with open(path[:-4] + " original.txt", "w", encoding="utf-8") as f:
+    with open(path + " original.txt", "w", encoding="utf-8") as f:
         f.write(og)
     if cleaned:
-        with open(path[:-4] + " cleaned.txt", "w",  encoding="utf-8") as f:
+        with open(path + " cleaned.txt", "w",  encoding="utf-8") as f:
             f.write(cleaned)
     if summary:
-        with open(path[:-4] + " summary.txt", "w", encoding="utf-8") as f:
+        with open(path + " summary.txt", "w", encoding="utf-8") as f:
             f.write(summary)
 
 
