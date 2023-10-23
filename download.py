@@ -3,8 +3,13 @@ from pytube import YouTube
 
 FORBIDDEN_FOLDER_CHARS = '\\/:*?"<>|'
 
+def get_audio_spotify(url):
+    pass
 
-def get_data(url):
+def get_video_yt(url):
+    pass
+
+def get_audio_yt(url):
     # TODO
     # GET SUBTITLES IF THERE ARE SUBTITLES
     # PUNCTUATE AND PARAGRAPH AND REMOVE REDUNCANCIES IN TRANSCRIPT
@@ -15,7 +20,6 @@ def get_data(url):
     start = time.time()
     print("getting youtube audio")
     yt = YouTube(url)
-    stream = yt.streams.first()
     title = yt.title
     description = yt.description
     print(yt)
@@ -31,7 +35,7 @@ def get_data(url):
     return title, description, path
 
 def main():
-    print(get_data("https://www.youtube.com/watch?v=5pl7ohz4xvg"))
+    get_audio_yt(input("Enter youtube url: "))
 
 
 if __name__ == "__main__":
