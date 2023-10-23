@@ -8,5 +8,5 @@ something for my personal use. there is too much video/audio content available o
 
 uses whisper to convert audio to text, then summarises with chatgpt. downloads audio of youtube videos locally.
 
-would like to implement a proper ui, incorporate timestamps and grab subtitles in the future. (23/10/23: implemented [here]())
+would like to implement a proper ui, incorporate timestamps and grab subtitles in the future. (23/10/23: implemented [here](https://github.com/exwaii/yt-transcribe-summariser))
 
