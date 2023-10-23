@@ -7,7 +7,23 @@ def get_audio_spotify(url):
     pass
 
 def get_video_yt(url):
-    pass
+    start = time.time()
+    print("getting youtube audio")
+    yt = YouTube(url)
+    print(yt)
+    for char in FORBIDDEN_FOLDER_CHARS:
+        yt.title = yt.title.replace(char, "")
+        if yt.description:
+            yt.description = yt.channel_urldescription.replace(char, "")
+    original_title = yt.title
+    yt.title = yt.title + " video"
+    path = yt.streams.filter(progressive=True).order_by('resolution').desc()[0].download(f"transcriptions/{original_title}")
+    with open(f"transcriptions/{original_title}/url.txt", "w") as f:
+        f.write(url)
+    download_time = time.time() - start
+    print(f"youtube audio downloaded in {download_time // 60} minute(s) and {download_time % 60} second(s)")
+    print(yt.captions)
+    return original_title, yt.description, path
 
 def get_audio_yt(url):
     # TODO
@@ -25,7 +41,8 @@ def get_audio_yt(url):
     print(yt)
     for char in FORBIDDEN_FOLDER_CHARS:
         title = title.replace(char, "")
-        description = description.replace(char, "")
+        if description:
+            description = description.replace(char, "")
     path = yt.streams.get_audio_only().download(f"transcriptions\\{title}")
     with open(f"transcriptions/{title}/url.txt", "w") as f:
         f.write(url)
@@ -35,7 +52,7 @@ def get_audio_yt(url):
     return title, description, path
 
 def main():
-    get_audio_yt(input("Enter youtube url: "))
+    get_video_yt(input("Enter youtube url: "))
 
 
 if __name__ == "__main__":
